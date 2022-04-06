@@ -18,6 +18,7 @@ const refs = {
 const createGalleryItem = ({ preview, original, description }) =>
     `<div class="gallery__item"><a class="gallery__link" href=${original}><img class="gallery__image" src=${preview} data-source=${original} alt=${description}/></a></div>`;
 
+
 const galleryMarkup = galleryItems.reduce(
     (acc, item) => acc + createGalleryItem(item),
     ""
@@ -33,8 +34,4 @@ function onGalleryClick(e) {
     }
     instance.element().querySelector('img').src = e.target.dataset.source;
     instance.show();
-    refs.lightbox.addEventListener("keyup", event => {
-        refs.lightbox.classList.add("is-open");
-        console.log("key: ", event.key);
-    });
 }
